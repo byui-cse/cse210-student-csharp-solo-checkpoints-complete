@@ -2,6 +2,13 @@ using System;
 
 namespace _05_hide_and_seek
 {
+    /// <summary>
+    /// The director is responsible to direct the game, including to keep track of all
+    /// the actors and to control the sequence of play.
+    /// 
+    /// Stereotype:
+    ///     Controller
+    /// </summary>
     public class Director
     {
         // In the future, we'll make some of these member variables/functions private,
@@ -11,6 +18,9 @@ namespace _05_hide_and_seek
         public Hider _hider;
         public UserService _userService;
 
+        /// <summary>
+        /// Initializes the actors of the game.
+        /// </summary>
         public Director()
         {
             _keepPlaying = true;
@@ -19,6 +29,9 @@ namespace _05_hide_and_seek
             _userService = new UserService();
         }
 
+        /// <summary>
+        /// This method starts the game and continues running until it is finished.
+        /// </summary>
         public void StartGame()
         {
             while (_keepPlaying)
@@ -29,6 +42,9 @@ namespace _05_hide_and_seek
             }
         }
 
+        /// <summary>
+        /// Get any input needed from the user.
+        /// </summary>
         public void GetInputs()
         {
             string message = _seeker.GetMessage();
@@ -40,6 +56,9 @@ namespace _05_hide_and_seek
             _seeker.Move(location);
         }
 
+        /// <summary>
+        /// Update any of the actors.
+        /// </summary>
         public void DoUpdates()
         {
             _hider.Watch(_seeker._location);
@@ -49,6 +68,9 @@ namespace _05_hide_and_seek
 
         }
 
+        /// <summary>
+        /// Display the updated state of the game to the user.
+        /// </summary>
         public void DoOutputs()
         {
             string hint = _hider.GetHint();

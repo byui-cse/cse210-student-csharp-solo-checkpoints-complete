@@ -3,6 +3,14 @@ using System.Collections.Generic;
 
 namespace _05_hide_and_seek
 {
+    /// <summary>
+    /// The responsibility of this class is to move from location to location
+    /// in pursuit of the Hider. And to track how far the seeker has moved since
+    /// the most recent location.
+    /// 
+    /// Stereotype:
+    ///     Information Holder
+    /// </summary>
     public class Seeker
     {
         // In the future, we'll make some of these member variables/functions private,
@@ -11,6 +19,10 @@ namespace _05_hide_and_seek
         public int _location;
         public List<int> _distances;
 
+        /// <summary>
+        /// Initializes the location of the seeker to a random location 1-1000.
+        /// Also initializes the list of distances traveled to be a new, empty list.
+        /// </summary>
         public Seeker()
         {
             // Start at a new random position from 1-1000
@@ -21,6 +33,17 @@ namespace _05_hide_and_seek
             _distances = new List<int>();
         }
 
+        /// <summary>
+        /// Gets a message based on whether the most recent distance traveled is
+        /// more or less than the last time the seeker moved.
+        /// 
+        /// If there is not enough information yet (fewer than 2 distances), a generic message is given
+        /// If the distance traveled is smaller than the time before, the message
+        ///     notes that the seeker is sneaking in.
+        /// If the distance traveled is larger than the time before, the message
+        ///     notes that the seeker is just wandering around.
+        /// </summary>
+        /// <returns>The message</returns>
         public string GetMessage()
         {
             string message = "";
@@ -50,6 +73,10 @@ namespace _05_hide_and_seek
             return message;
         }
 
+        /// <summary>
+        /// Moves the seeker to a new location and computes (and saves) the distance traveled.
+        /// </summary>
+        /// <param name="newLocation">The new seeker location</param>
         public void Move(int newLocation)
         {
             // Compute the distance we have moved since last time
