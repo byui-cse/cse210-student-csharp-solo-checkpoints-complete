@@ -12,9 +12,9 @@ namespace _08_rfk
         public const int FRAME_RATE = 90;
 
         public const int DEFAULT_SQUARE_SIZE = 20;
-        public const int DEFAULT_FONT_SIZE = 18;
+        public const int DEFAULT_FONT_SIZE = 20;
         public const int DEFAULT_TEXT_OFFSET = 4;
-        public const int NUM_ARTIFACTS = 45;
+        public const int NUM_ARTIFACTS = 30;
 
         public const int ROBOT_SPEED = 2;
         public const string DEFAULT_BILLBOARD_MESSAGE = "Robot Finding Kitten";

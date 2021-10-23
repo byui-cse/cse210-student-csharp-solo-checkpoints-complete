@@ -51,11 +51,13 @@ namespace _08_rfk.Services
             {
                 x = 1;
             }
-            else if (IsUpPressed())
+            
+            if (IsUpPressed())
             {
                 y = -1;
             }
-            else if (IsDownPressed())
+            
+            if (IsDownPressed())
             {
                 y = 1;
             }
