@@ -13,7 +13,7 @@ namespace _07_snake
 
         }
 
-        public void OpenWindow(int height, int width, string title, int frameRate)
+        public void OpenWindow(int width, int height, string title, int frameRate)
         {
             Raylib.InitWindow(width, height, title);
             Raylib.SetTargetFPS(frameRate);
@@ -54,7 +54,11 @@ namespace _07_snake
                 color = Raylib_cs.Color.BLACK;
             }
 
-            Raylib.DrawText(text, x + 3, y + 1, 16, color);
+            Raylib.DrawText(text,
+                x + Constants.DEFAULT_TEXT_OFFSET,
+                y + Constants.DEFAULT_TEXT_OFFSET,
+                Constants.DEFAULT_FONT_SIZE,
+                color);
         }
 
         public void DrawActor(Actor actor)

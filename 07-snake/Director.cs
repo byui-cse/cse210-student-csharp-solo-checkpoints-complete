@@ -44,7 +44,7 @@ namespace _07_snake
         /// </summary>
         private void PrepareGame()
         {
-            _outputService.OpenWindow(Constants.MAX_Y, Constants.MAX_X, "Snake Game", Constants.FRAME_RATE);
+            _outputService.OpenWindow(Constants.MAX_X, Constants.MAX_Y, "Snake Game", Constants.FRAME_RATE);
         }
 
         /// <summary>

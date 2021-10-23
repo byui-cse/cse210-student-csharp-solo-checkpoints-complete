@@ -19,7 +19,7 @@ namespace _07_snake
         public void Reset()
         {
             Random randomGenerator = new Random();
-            _points = randomGenerator.Next(1, 5);
+            _points = randomGenerator.Next(1, 10);
             _text = _points.ToString();
 
             int x = randomGenerator.Next(0, Constants.MAX_X);

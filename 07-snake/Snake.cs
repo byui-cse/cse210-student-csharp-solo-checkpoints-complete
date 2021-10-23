@@ -37,10 +37,6 @@ namespace _07_snake
             return _segments[0];
         }
 
-        // public List<Segment> GetBody()
-        // {
-        // }
-
         public List<Actor> GetAllSegments()
         {
             return _segments;
