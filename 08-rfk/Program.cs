@@ -29,6 +29,11 @@ namespace _08_rfk
             cast["stationary"] = new List<Actor>();
 
             ArtifactGenerator generator = new ArtifactGenerator();
+
+            Artifact kitten = generator.Generate();
+            kitten.SetDescription("You found the kitten!");
+            cast["stationary"].Add(kitten);
+
             for (int i = 0; i < Constants.NUM_ARTIFACTS; i++)
             {
                 Artifact artifact = generator.Generate();
