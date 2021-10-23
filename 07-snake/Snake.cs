@@ -3,6 +3,10 @@ using System.Collections.Generic;
 
 namespace _07_snake
 {
+    /// <summary>
+    /// Represents the snake in the game which is composed of a list
+    /// of overlapping segments.
+    /// </summary>
     class Snake : Actor
     {
         private List<Actor> _segments = new List<Actor>();
@@ -13,6 +17,9 @@ namespace _07_snake
             PrepareBody();
         }
 
+        /// <summary>
+        /// Prepares the initial body in the middle of the screen.
+        /// </summary>
         private void PrepareBody()
         {
             int x = Constants.MAX_X / 2;
@@ -32,21 +39,39 @@ namespace _07_snake
 
         }
 
+        /// <summary>
+        /// Gets the first segment.
+        /// </summary>
+        /// <returns></returns>
         public Actor GetHead()
         {
             return _segments[0];
         }
 
+        /// <summary>
+        /// Gets all segments in the snake's body (including the head).
+        /// </summary>
+        /// <returns></returns>
         public List<Actor> GetAllSegments()
         {
             return _segments;
         }
 
+        /// <summary>
+        /// Gets a list of all segments that the head should not collide with.
+        /// We don't want to check all of the segments for collision, because
+        /// the first few overlap with the head all the time.
+        /// </summary>
+        /// <returns></returns>
         public List<Actor> GetCollidableSegments()
         {
             return _segments.GetRange(_canCollideIndex, _segments.Count - _canCollideIndex);
         }
 
+        /// <summary>
+        /// Increases the tail by the amount specified.
+        /// </summary>
+        /// <param name="amount"></param>
         public void GrowTail(int amount)
         {
             amount *= 10;
@@ -57,6 +82,9 @@ namespace _07_snake
             }
         }
 
+        /// <summary>
+        /// Increases the tail by a single segment.
+        /// </summary>
         public void GrowTailSingle()
         {
             Actor tail = _segments[_segments.Count - 1];
@@ -69,6 +97,9 @@ namespace _07_snake
             _segments.Add(newSegment);
         }
 
+        /// <summary>
+        /// Moves each segment of the snake forward.
+        /// </summary>
         public void Move()
         {
             // First move them all forward...
@@ -91,6 +122,10 @@ namespace _07_snake
             }
         }
 
+        /// <summary>
+        /// Turns the head in the direction specified.
+        /// </summary>
+        /// <param name="direction"></param>
         public void TurnHead(Point direction)
         {
             _segments[0].SetVelocity(direction);

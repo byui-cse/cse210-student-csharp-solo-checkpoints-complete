@@ -4,6 +4,9 @@ using Raylib_cs;
 
 namespace _07_snake
 {
+    /// <summary>
+    /// Handles all the interaction with the drawing library.
+    /// </summary>
     public class OutputService
     {
         private Raylib_cs.Color _backgroundColor = Raylib_cs.Color.WHITE;
@@ -13,38 +16,65 @@ namespace _07_snake
 
         }
 
+        /// <summary>
+        /// Opens a new window with the specified coordinates and title.
+        /// </summary>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <param name="title"></param>
+        /// <param name="frameRate"></param>
         public void OpenWindow(int width, int height, string title, int frameRate)
         {
             Raylib.InitWindow(width, height, title);
             Raylib.SetTargetFPS(frameRate);
         }
 
+        /// <summary>
+        /// Closes the window
+        /// </summary>
         public void CloseWindow()
         {
             Raylib.CloseWindow();
         }
 
-        public bool IsWindowClosing()
-        {
-            return Raylib.WindowShouldClose();
-        }
-
+        /// <summary>
+        /// Starts the drawing process. This should be called
+        /// before any draw commands.
+        /// </summary>
         public void StartDrawing()
         {
             Raylib.BeginDrawing();
             Raylib.ClearBackground(_backgroundColor);
         }
 
+        /// <summary>
+        /// This finishes the drawing process. This should be called
+        /// after all draw commands are finished.
+        /// </summary>
         public void EndDrawing()
         {
             Raylib.EndDrawing();
         }
 
+        /// <summary>
+        /// Draws a rectangular box on the screen at the provided coordinates.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
         public void DrawBox(int x, int y, int width, int height)
         {
             Raylib.DrawRectangle(x, y, width, height, Raylib_cs.Color.BLUE);            
         }
 
+        /// <summary>
+        /// Displays text on the screen at the provided coordinates.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="text"></param>
+        /// <param name="darkText"></param>
         public void DrawText(int x, int y, string text, bool darkText)
         {
             Raylib_cs.Color color = Raylib_cs.Color.WHITE;
@@ -61,6 +91,10 @@ namespace _07_snake
                 color);
         }
 
+        /// <summary>
+        /// Draws a single actor.
+        /// </summary>
+        /// <param name="actor"></param>
         public void DrawActor(Actor actor)
         {
             int x = actor.GetX();
@@ -83,6 +117,10 @@ namespace _07_snake
             }
         }
 
+        /// <summary>
+        /// Draws a list of actors.
+        /// </summary>
+        /// <param name="actors"></param>
         public void DrawActors(List<Actor> actors)
         {
             foreach (Actor actor in actors)

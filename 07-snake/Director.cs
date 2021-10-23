@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Raylib_cs;
 
 namespace _07_snake
 {
@@ -16,7 +17,6 @@ namespace _07_snake
 
         OutputService _outputService = new OutputService();
         InputService _inputService = new InputService();
-        PhysicsService _physicsService = new PhysicsService();
 
         Food _food = new Food();
         Snake _snake = new Snake();
@@ -34,6 +34,11 @@ namespace _07_snake
                 GetInputs();
                 DoUpdates();
                 DoOutputs();
+
+                if (_inputService.IsWindowClosing())
+                {
+                    _keepPlaying = false;
+                }
             }
 
             Console.WriteLine("Game over!");
@@ -95,6 +100,10 @@ namespace _07_snake
             _outputService.EndDrawing();
         }
 
+        /// <summary>
+        /// Looks for and handles collisions between the snake's head
+        /// and it's body.
+        /// </summary>
         private void HandleBodyCollision()
         {
             Actor head = _snake.GetHead();
@@ -103,7 +112,7 @@ namespace _07_snake
 
             foreach(Actor segment in segments)
             {
-                if (_physicsService.IsCollision(head, segment))
+                if (IsCollision(head, segment))
                 {
                     // There is a collision
                     _keepPlaying = false;
@@ -112,11 +121,15 @@ namespace _07_snake
             }
         }
 
+        /// <summary>
+        /// Looks for and handles the case of the snake's head
+        /// colliding with the food.
+        /// </summary>
         private void HandleFoodCollision()
         {
             Actor head = _snake.GetHead();
             
-            if (_physicsService.IsCollision(head, _food))
+            if (IsCollision(head, _food))
             {
                 int points = _food.GetPoints();
 
@@ -125,6 +138,34 @@ namespace _07_snake
                 _food.Reset();
             }
         }
+
+        /// <summary>
+        /// Returns true if the two actors are overlapping.
+        /// </summary>
+        /// <param name="first"></param>
+        /// <param name="second"></param>
+        /// <returns></returns>
+        public bool IsCollision(Actor first, Actor second)
+        {
+            int x1 = first.GetX();
+            int y1 = first.GetY();
+            int width1 = first.GetWidth();
+            int height1 = first.GetHeight();
+
+            Raylib_cs.Rectangle rectangle1
+                = new Raylib_cs.Rectangle(x1, y1, width1, height1);
+
+            int x2 = second.GetX();
+            int y2 = second.GetY();
+            int width2 = second.GetWidth();
+            int height2 = second.GetHeight();
+
+            Raylib_cs.Rectangle rectangle2
+                = new Raylib_cs.Rectangle(x2, y2, width2, height2);
+
+            return Raylib.CheckCollisionRecs(rectangle1, rectangle2);
+        }
+
 
     }
 }

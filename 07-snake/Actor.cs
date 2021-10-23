@@ -2,6 +2,9 @@ using System;
 
 namespace _07_snake
 {
+    /// <summary>
+    /// Base class for all actors in the game.
+    /// </summary>
     public class Actor
     {
         protected Point _position;
@@ -67,6 +70,10 @@ namespace _07_snake
             _velocity = newVelocity;
         }
 
+        /// <summary>
+        /// Moves the actor forward one space according to the current
+        /// velocity.
+        /// </summary>
         public void MoveNext()
         {
             int x = _position.GetX();

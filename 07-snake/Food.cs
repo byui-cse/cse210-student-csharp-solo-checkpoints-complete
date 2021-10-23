@@ -2,12 +2,16 @@ using System;
 
 namespace _07_snake
 {
+    /// <summary>
+    /// A class to represent the food in the game.
+    /// </summary>
     class Food : Actor
     {
         private int _points;
 
         public Food()
         {
+            // Use the standard reset method to start the initial food.
             Reset();
         }
 
@@ -16,6 +20,10 @@ namespace _07_snake
             return _points;
         }
 
+        /// <summary>
+        /// Sets the food to a random point value from 1-10.
+        /// Also puts it at a random location on the screen.
+        /// </summary>
         public void Reset()
         {
             Random randomGenerator = new Random();

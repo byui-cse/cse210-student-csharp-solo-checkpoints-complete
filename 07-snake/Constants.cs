@@ -2,6 +2,9 @@ using System;
 
 namespace _07_snake
 {
+    /// <summary>
+    /// This is a set of program wide constants to be used in other classes.
+    /// </summary>
     public static class Constants
     {
         public const int MAX_X = 600;

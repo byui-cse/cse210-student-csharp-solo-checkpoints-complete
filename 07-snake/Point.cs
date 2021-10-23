@@ -2,6 +2,11 @@ using System;
 
 namespace _07_snake
 {
+    /// <summary>
+    /// Represents an X, Y pair.
+    /// 
+    /// This can be used for both a location and also a velocity.
+    /// </summary>
     public class Point
     {
         private int _x;
@@ -23,6 +28,11 @@ namespace _07_snake
             return _y;
         }
 
+        /// <summary>
+        /// Returns a new point that is the result of adding this one to the provided one.
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
         public Point Add(Point other)
         {
             int newX = _x + other._x;
@@ -31,6 +41,11 @@ namespace _07_snake
             return new Point(newX, newY);
         }
 
+        /// <summary>
+        /// Returns a new point that is the reversed version of this one.
+        /// Both X and Y are multiplied by -1.
+        /// </summary>
+        /// <returns></returns>
         public Point Reverse()
         {
             int newX = _x * -1;
@@ -39,6 +54,11 @@ namespace _07_snake
             return new Point(newX, newY);
         }
 
+        /// <summary>
+        /// Used by the system when you use == to compare the points.
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public override bool Equals(object obj)
         {
             return obj is Point point &&
